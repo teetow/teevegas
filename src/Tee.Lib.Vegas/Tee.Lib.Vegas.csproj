@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D235A798-3BC5-4119-AC51-A45CFC2118A6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Tee.Lib.Vegas</RootNamespace>
+    <AssemblyName>Tee.Lib.Vegas</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Release\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Sony.Vegas, Version=9.0.0.896, Culture=neutral, PublicKeyToken=3cda94b1926e6fbc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Sony\Vegas Pro 9.0\Sony.Vegas.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Dialogs\FormResult.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\FormResult.Designer.cs">
+      <DependentUpon>FormResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Project\EventPropertiesTemplateBinder.cs" />
+    <Compile Include="Render\ErrorLogDelegate.cs" />
+    <Compile Include="Render\RenderParameter.cs" />
+    <Compile Include="Dialogs\YesNoAll.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\YesNoAll.designer.cs">
+      <DependentUpon>YesNoAll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Project\EventPropertiesTemplate.cs" />
+    <Compile Include="Project\EventGroup.cs" />
+    <Compile Include="Ext.cs" />
+    <Compile Include="Project\RegionGroup.cs" />
+    <Compile Include="Dialogs\FormTimeEntry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Project\SerializableFade.cs" />
+    <Compile Include="Render\RenderItem.cs" />
+    <Compile Include="Render\RenderParamSet.cs" />
+    <Compile Include="Render\RenderRegion.cs" />
+    <Compile Include="Render\RenderSet.cs" />
+    <Compile Include="Render\RenderToken.cs" />
+    <Compile Include="Render\RenderStrings.cs" />
+    <Compile Include="Render\RenderTags.cs" />
+    <Compile Include="Render\SetProgressBoundsDelegate.cs" />
+    <Compile Include="Render\SetProgressDelegate.cs" />
+    <Compile Include="Render\SetProgressStatusDelegate.cs" />
+    <Compile Include="ScriptOption\ScriptOption.cs" />
+    <Compile Include="ScriptOption\ScriptOptionCollection.cs" />
+    <Compile Include="ScriptOption\ScriptOptionStrings.cs" />
+    <Compile Include="Strings.cs" />
+    <Compile Include="Template.cs" />
+    <Compile Include="ErrorLog.cs" />
+    <Compile Include="ScriptOption\ScriptOptions.cs" />
+    <Compile Include="Dialogs\FormProgressDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\FormProgressDialog.designer.cs">
+      <DependentUpon>FormProgressDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\FormSimplePrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\FormSimplePrompt.designer.cs">
+      <DependentUpon>FormSimplePrompt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProjectExtensions.cs" />
+    <Compile Include="TimecodeMode.cs" />
+    <Compile Include="TrackEventComparer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Dialogs\FormResult.resx">
+      <DependentUpon>FormResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\YesNoAll.resx">
+      <DependentUpon>YesNoAll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\FormProgressDialog.resx">
+      <DependentUpon>FormProgressDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\FormSimplePrompt.resx">
+      <DependentUpon>FormSimplePrompt.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Tee.Lib.Riff\Tee.Lib.Riff.csproj">
+      <Project>{B0BF5C00-DD91-425F-BA80-9C5E383D6841}</Project>
+      <Name>Tee.Lib.Riff</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /R /Y "$(TargetPath)" "c:\Program Files\TeeVegas\Application Extensions\"
+xcopy /R /Y "$(TargetPath)" "c:\Program Files\TeeVegas\Script Menu\"</PostBuildEvent>
+  </PropertyGroup>
+</Project>

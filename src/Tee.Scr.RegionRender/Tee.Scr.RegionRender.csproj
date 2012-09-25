@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D156229B-5795-49D7-B484-CE9B9604ED9C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Tee.Scr.RegionRender</RootNamespace>
+    <AssemblyName>Tee.Scr.RegionRender</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Release\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Sony.Vegas">
+      <HintPath>C:\Program Files (x86)\Sony\Vegas Pro 9.0\Sony.Vegas.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EntryPoint.cs" />
+    <Compile Include="Ext.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="RegionRenderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegionRenderForm.Designer.cs">
+      <DependentUpon>RegionRenderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RenderItemView.cs" />
+    <Compile Include="RenderParamsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RenderParamsForm.Designer.cs">
+      <DependentUpon>RenderParamsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RenderRootDir.cs" />
+    <Compile Include="RenderRootDirManagerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RenderRootDirManagerForm.Designer.cs">
+      <DependentUpon>RenderRootDirManagerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RenderRootDirSet.cs" />
+    <Compile Include="Strings.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegionRenderForm.resx">
+      <DependentUpon>RegionRenderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RenderParamsForm.resx">
+      <DependentUpon>RenderParamsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RenderRootDirManagerForm.resx">
+      <DependentUpon>RenderRootDirManagerForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Newtonsoft.Json\Newtonsoft.Json\Newtonsoft.Json.Net35.csproj">
+      <Project>{A9AE40FF-1A21-414A-9FE7-3BE13644CC6D}</Project>
+      <Name>Newtonsoft.Json.Net35</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tee.Lib.Vegas\Tee.Lib.Vegas.csproj">
+      <Project>{D235A798-3BC5-4119-AC51-A45CFC2118A6}</Project>
+      <Name>Tee.Lib.Vegas</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\DataSources\RenderItemView.datasource" />
+    <None Include="Properties\DataSources\Tee.Lib.Vegas.Render.RenderRootDir.datasource" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Control_FolderBrowserDialog.bmp" />
+    <None Include="Assets\Control_FolderBrowserDialog.png" />
+    <None Include="Resources\IconBrowse.bmp" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /R /Y "$(TargetPath)" "c:\Program Files\TeeVegas\Script Menu\"</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
