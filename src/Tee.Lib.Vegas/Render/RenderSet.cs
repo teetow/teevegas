@@ -205,66 +205,67 @@ namespace Tee.Lib.Vegas.Render
 			SetProgressBounds(Count);
 			using (UndoBlock undo = new UndoBlock("Render tracks"))
 			{
+                MessageBox.Show("I am alive!");
 				for (int i = 0; i < Count; i++)
 				{
-					var ri = this[i];
+					var renderItem = this[i];
 
 					foreach (var trk in myVegas.Project.Tracks)
 					{
-						trk.Mute = !ri.Tracks.Contains(trk);
+						trk.Mute = !renderItem.Tracks.Contains(trk);
 					}
 
 					// padding
-					if (ri.RenderParams.GetParam<bool>(RenderTags.DoPadding))
+					if (renderItem.RenderParams.GetParam<bool>(RenderTags.DoPadding))
 					{
-						if (ri.RenderTemplate.RendererID != myVegas.Renderers.FindByName("Wave (Microsoft)").ID)
+						if (renderItem.RenderTemplate.RendererID != myVegas.Renderers.FindByName("Wave (Microsoft)").ID)
 						{
 							ErrorLog(
 								String.Format(
 									"The region {0} could not be padded. Padded rendering can only be performed on .WAV (PCM) files.",
-									ri.Region.Label));
+									renderItem.Region.Label));
 						}
 						else
 						{
-							var paddingTime = Timecode.FromSeconds(ri.PaddingSeconds);
-							if (ri.Start - paddingTime < myVegas.Project.Ruler.StartTime)
+							var paddingTime = Timecode.FromSeconds(renderItem.PaddingSeconds);
+							if (renderItem.Start - paddingTime < myVegas.Project.Ruler.StartTime)
 							{
 								ErrorLog(String.Format(
-									"The region {0} could not be padded. Move your region further into the project.", ri.Region.Label));
+									"The region {0} could not be padded. Move your region further into the project.", renderItem.Region.Label));
 							}
 							else
 							{
-								ri.Start -= paddingTime;
-								ri.Length += paddingTime;
-								ri.Length += paddingTime;
+								renderItem.Start -= paddingTime;
+								renderItem.Length += paddingTime;
+								renderItem.Length += paddingTime;
 							}
 						}
 					}
 
-					if (File.Exists(ri.FilePath) && ri.RenderParams.GetParam<bool>(RenderTags.DoReadonly))
+					if (File.Exists(renderItem.FilePath) && renderItem.RenderParams.GetParam<bool>(RenderTags.DoReadonly))
 					{
 						// check readonly
-						var attr = File.GetAttributes(ri.FilePath);
+						var attr = File.GetAttributes(renderItem.FilePath);
 						if (attr.IsSet(FileAttributes.ReadOnly))
 						{
-							File.SetAttributes(ri.FilePath, attr & ~FileAttributes.ReadOnly);
+							File.SetAttributes(renderItem.FilePath, attr & ~FileAttributes.ReadOnly);
 						}
 					}
 					SetProgress(i);
-					SetProgressStatus("Rendering " + ri.FilePath);
-					RenderStatus status = myVegas.Render(ri.FilePath, ri.RenderTemplate, ri.Start, ri.Length);
+					SetProgressStatus("Rendering " + renderItem.FilePath);
+					RenderStatus status = myVegas.Render(renderItem.FilePath, renderItem.RenderTemplate, renderItem.Start, renderItem.Length);
 					if (status != RenderStatus.Complete)
 					{
-						ErrorLog(String.Format("{0} raised error {1}", ri.FilePath, status.ToString()));
+						ErrorLog(String.Format("{0} raised error {1}", renderItem.FilePath, status.ToString()));
 					}
 					else
 					{
 						// file successfully rendered
 
 						// strip padding
-						if (ri.RenderParams.GetParam<bool>(RenderTags.DoPadding))
+						if (renderItem.RenderParams.GetParam<bool>(RenderTags.DoPadding))
 						{
-							WaveFile.StripPadding(ri.FilePath, ri.PaddingSeconds);
+							WaveFile.StripPadding(renderItem.FilePath, renderItem.PaddingSeconds);
 						}
 					}
 				}
