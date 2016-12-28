@@ -1,6 +1,0 @@
-{
-  "name": "Teevegas",
-  "tagline": "TeeVegas is a set of scripts and tools to make Sony Vegas more usable for sound designers.",
-  "body": "# Make Vegas great again!\r\nTeeVegas is a set of scripts and tools to make Vegas Pro more usable for sound designers. The overall goal is to make Vegas asset-centric, turning it into a solution for creating and manipulating individual sound files, and also to assist in performing tasks that are commonplace in sound design.\r\n\r\n## Features\r\nRegionRender — A flexible batch rendering solution with full recall\r\nMetaMarkers — Quickly select and randomize takes and variations within samples\r\nSearch / replace, re-arrange and audition regions before rendering\r\nMedia management — Collate, re-target and create new versions of your source assets\r\nCurrently, TeeVegas is offered as a standalone package, meaning you’ll have to do some gentle hood-popping to get it up and running in Vegas.\r\n\r\n__TeeVegas is offered as-is, free of charge, with limited support.",
-  "note": "Don't delete this file! It's used internally to help with page regeneration."
-}

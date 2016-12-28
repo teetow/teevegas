@@ -1,0 +1,8 @@
+title: Teevegas
+description: TeeVegas is a set of scripts and tools to make Sony Vegas more usable for sound designers.
+google_analytics: 
+show_downloads: true
+theme: jekyll-theme-minimal
+
+gems:
+  - jekyll-mentions
