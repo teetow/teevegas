@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using Sony.Vegas;
+using ScriptPortal.Vegas;
 using Tee.Lib.Vegas;
 using Tee.Lib.Vegas.Dialogs;
 

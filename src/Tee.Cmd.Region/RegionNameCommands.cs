@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Sony.Vegas;
+using ScriptPortal.Vegas;
 using Tee.Lib.Vegas;
 using Tee.Lib.Vegas.Project;
 

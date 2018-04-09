@@ -1,6 +1,6 @@
 using System;
 using System.Collections;
-using Sony.Vegas;
+using ScriptPortal.Vegas;
 
 namespace Tee.Cmd.Project
 {

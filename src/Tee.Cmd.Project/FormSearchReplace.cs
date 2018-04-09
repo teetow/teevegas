@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using Sony.Vegas;
-using Region = Sony.Vegas.Region;
+using ScriptPortal.Vegas;
+using Region = ScriptPortal.Vegas.Region;
 
 namespace Tee.Cmd.Project
 {

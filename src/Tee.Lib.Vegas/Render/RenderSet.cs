@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using Sony.Vegas;
+using ScriptPortal.Vegas;
 using Tee.Lib.Riff.Wave;
 
 namespace Tee.Lib.Vegas.Render
@@ -43,7 +43,7 @@ namespace Tee.Lib.Vegas.Render
 				ErrorLogInvoke(Status);
 		}
 
-		public void Build(Sony.Vegas.Vegas Vegas)
+		public void Build(ScriptPortal.Vegas.Vegas Vegas)
 		{
 			Clear();
 			if (Vegas.GetSelectedRegions() == null)
@@ -54,7 +54,7 @@ namespace Tee.Lib.Vegas.Render
 			BuildMergeByFilename(Vegas);
 		}
 
-		private void BuildScanRegions(Sony.Vegas.Vegas Vegas)
+		private void BuildScanRegions(ScriptPortal.Vegas.Vegas Vegas)
 		{
 			var regions = UseSelection ? Vegas.GetSelectedRegions().Where(r => !r.Label.ContainsRenderTag(RenderTags.NoRender)).ToList() : Vegas.Project.Regions.Where(region => !region.Label.ContainsRenderTag(RenderTags.NoRender)).ToList();
 			SetProgressBounds(regions.Count);
@@ -113,7 +113,7 @@ namespace Tee.Lib.Vegas.Render
 			}
 		}
 
-		private void BuildApplyCounters(Sony.Vegas.Vegas Vegas)
+		private void BuildApplyCounters(ScriptPortal.Vegas.Vegas Vegas)
 		{
 			// pass II: counters
 			var nameHitCount = new Dictionary<string, int>();
@@ -144,7 +144,7 @@ namespace Tee.Lib.Vegas.Render
 			}
 		}
 
-		private void BuildApplyTemplates(Sony.Vegas.Vegas Vegas)
+		private void BuildApplyTemplates(ScriptPortal.Vegas.Vegas Vegas)
 		{
 			// pass III: rendertemplates
 			SetProgressBounds(Count);
@@ -175,7 +175,7 @@ namespace Tee.Lib.Vegas.Render
 			}
 		}
 
-		private void BuildMergeByFilename(Sony.Vegas.Vegas Vegas)
+		private void BuildMergeByFilename(ScriptPortal.Vegas.Vegas Vegas)
 		{
 			SetProgressBounds(Count);
 			SetProgressStatus(RenderStrings.StatusBuildingOptimizing);
@@ -200,7 +200,7 @@ namespace Tee.Lib.Vegas.Render
 			}
 		}
 
-		public void Render(Sony.Vegas.Vegas myVegas)
+		public void Render(ScriptPortal.Vegas.Vegas myVegas)
 		{
 			SetProgressBounds(Count);
 			using (UndoBlock undo = new UndoBlock("Render tracks"))
@@ -268,7 +268,7 @@ namespace Tee.Lib.Vegas.Render
 						}
 					}
 				}
-				foreach (Sony.Vegas.Track trk in myVegas.Project.Tracks)
+				foreach (ScriptPortal.Vegas.Track trk in myVegas.Project.Tracks)
 				{
 					trk.Mute = false;
 				}

@@ -1,5 +1,5 @@
 using System;
-using Sony.Vegas;
+using ScriptPortal.Vegas;
 
 namespace Tee.Lib.Vegas.Project
 {

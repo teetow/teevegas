@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Sony.Vegas;
+using ScriptPortal.Vegas;
 
 namespace Tee.Lib.Vegas
 {
