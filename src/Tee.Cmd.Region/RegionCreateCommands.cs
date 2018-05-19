@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Sony.Vegas;
+using ScriptPortal.Vegas;
 using Tee.Lib.Vegas;
 
 namespace Tee.Cmd.Region
@@ -31,8 +31,8 @@ namespace Tee.Cmd.Region
 		{
 			var eventgroups = myVegas.Project.GetEventGroups();
 			var regions = (myVegas.Project.Regions.Count != 0)
-												? new List<Sony.Vegas.Region>(myVegas.Project.Regions)
-												: new List<Sony.Vegas.Region>();
+												? new List<ScriptPortal.Vegas.Region>(myVegas.Project.Regions)
+												: new List<ScriptPortal.Vegas.Region>();
 
 			bool selectionSet = false;
 			if (myVegas.SelectionLength != Timecode.FromMilliseconds(0))
@@ -68,7 +68,7 @@ namespace Tee.Cmd.Region
 					if (regions.HasInside(groupStart, groupEnd))
 						continue;
 
-					var NewRegion = new Sony.Vegas.Region(groupStart, (groupEnd - groupStart));
+					var NewRegion = new ScriptPortal.Vegas.Region(groupStart, (groupEnd - groupStart));
 					myVegas.Project.Regions.Add(NewRegion);
 				}
 			}

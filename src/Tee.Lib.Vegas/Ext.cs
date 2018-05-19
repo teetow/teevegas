@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using Sony.Vegas;
+using ScriptPortal.Vegas;
 using Tee.Lib.Vegas.Render;
 
 namespace Tee.Lib.Vegas
@@ -90,7 +90,7 @@ namespace Tee.Lib.Vegas
 		/// Rendering
 		///
 
-		public static RenderParamSet GetParamsAt(this Sony.Vegas.Project Project, Timecode Time)
+		public static RenderParamSet GetParamsAt(this ScriptPortal.Vegas.Project Project, Timecode Time)
 		{
 			var renderParams = new RenderParamSet();
 			var cmarkers = Project.CommandMarkers.Where(mk => mk.Position <= Time);

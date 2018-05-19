@@ -5,7 +5,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Windows.Forms;
-using Sony.Vegas;
+using ScriptPortal.Vegas;
 using Tee.Lib.Riff.Wave;
 using Tee.Lib.Vegas;
 using Tee.Lib.Vegas.Dialogs;

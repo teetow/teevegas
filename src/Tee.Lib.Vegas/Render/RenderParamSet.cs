@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Sony.Vegas;
+using ScriptPortal.Vegas;
 
 namespace Tee.Lib.Vegas.Render
 {

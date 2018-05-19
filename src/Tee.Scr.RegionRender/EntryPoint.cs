@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Windows.Forms;
 using System.Xml;
-using Sony.Vegas;
+using ScriptPortal.Vegas;
 using Tee.Lib.Vegas;
 using Tee.Lib.Vegas.Render;
 

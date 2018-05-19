@@ -1,14 +1,16 @@
+using ScriptPortal.Vegas;
 using System.Collections.Generic;
 using System.Linq;
-using Sony.Vegas;
+
 using Tee.Lib.Vegas.Project;
 
 namespace Tee.Lib.Vegas
 {
 	public static class ProjectExtensions
 	{
-		public static List<List<TrackEvent>> GetEventGroups(this Sony.Vegas.Project Project)
+		public static List<List<TrackEvent>> GetEventGroups(this ScriptPortal.Vegas.Project Project)
 		{
+		    
 			List<TrackEvent> events = Project.GetSelectedEvents(true);
 			if (events.Count == 0)
 				events = Project.GetAllEvents();
@@ -37,12 +39,12 @@ namespace Tee.Lib.Vegas
 			return groups;
 		}
 
-		public static List<TrackEvent> GetAllEvents(this Sony.Vegas.Project Project)
+		public static List<TrackEvent> GetAllEvents(this ScriptPortal.Vegas.Project Project)
 		{
 			return Project.Tracks.SelectMany(CTrack => CTrack.Events).ToList();
 		}
 
-		public static List<RegionGroup> GetRegionGroups(this Sony.Vegas.Vegas Vegas)
+		public static List<RegionGroup> GetRegionGroups(this ScriptPortal.Vegas.Vegas Vegas)
 		{
 			Timecode selStart = Vegas.Transport.SelectionStart;
 			Timecode selEnd = Vegas.Transport.SelectionStart + Vegas.Transport.SelectionLength;
@@ -76,7 +78,7 @@ namespace Tee.Lib.Vegas
 			return rGrps;
 		}
 
-		public static List<TrackEvent> GetSelectedEvents(this Sony.Vegas.Project Project, bool SortByTime = false)
+		public static List<TrackEvent> GetSelectedEvents(this ScriptPortal.Vegas.Project Project, bool SortByTime = false)
 		{
 			var selectedEvents = new List<TrackEvent>();
 			foreach (Track trk in Project.Tracks)
@@ -108,12 +110,12 @@ namespace Tee.Lib.Vegas
 			return sortedEvents;
 		}
 
-		public static Region FindRegion(this Sony.Vegas.Project Project, string RegionName)
+		public static Region FindRegion(this ScriptPortal.Vegas.Project Project, string RegionName)
 		{
 			return FindRegion(Project, RegionName, Timecode.FromSeconds(0));
 		}
 
-		public static Region FindRegion(this Sony.Vegas.Project Project, string RegionName, Timecode After)
+		public static Region FindRegion(this ScriptPortal.Vegas.Project Project, string RegionName, Timecode After)
 		{
 			var matchingRegions = new List<Region>();
 
@@ -133,7 +135,7 @@ namespace Tee.Lib.Vegas
 			return null;
 		}
 
-		public static Region GetSelectedRegion(this Sony.Vegas.Vegas Vegas)
+		public static Region GetSelectedRegion(this ScriptPortal.Vegas.Vegas Vegas)
 		{
 			if (Vegas.Transport.SelectionLength == Timecode.FromSeconds(0))
 				return null;
@@ -141,7 +143,7 @@ namespace Tee.Lib.Vegas
 			return Vegas.Project.Regions.FirstOrDefault(r => r.Position == Vegas.Transport.SelectionStart && r.Length == Vegas.Transport.SelectionLength);
 		}
 
-		public static List<Region> GetSelectedRegions(this Sony.Vegas.Vegas Vegas)
+		public static List<Region> GetSelectedRegions(this ScriptPortal.Vegas.Vegas Vegas)
 		{
 			if (Vegas.Transport.SelectionLength == Timecode.FromSeconds(0))
 				return null;
@@ -166,7 +168,7 @@ namespace Tee.Lib.Vegas
 			}
 		}
 
-		public static List<Marker> GetSelectedMarkers(this Sony.Vegas.Vegas Vegas)
+		public static List<Marker> GetSelectedMarkers(this ScriptPortal.Vegas.Vegas Vegas)
 		{
 			if (Vegas.SelectionLength.Nanos == 0)
 				return new List<Marker>();

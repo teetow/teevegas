@@ -1,6 +1,6 @@
 using System;
 using System.Windows.Forms;
-using Sony.Vegas;
+using ScriptPortal.Vegas;
 
 namespace Tee.Lib.Vegas.Dialogs
 {

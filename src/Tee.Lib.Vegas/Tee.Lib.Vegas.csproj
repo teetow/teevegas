@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Tee.Lib.Vegas</RootNamespace>
     <AssemblyName>Tee.Lib.Vegas</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>
     </SccProjectName>
@@ -69,10 +69,8 @@
     <OutputPath>bin\x86\Release\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Sony.Vegas, Version=9.0.0.896, Culture=neutral, PublicKeyToken=3cda94b1926e6fbc, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\Sony\Vegas Pro 9.0\Sony.Vegas.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="ScriptPortal.Vegas">
+      <HintPath>C:\Program Files\VEGAS\VEGAS Pro 15.0\ScriptPortal.Vegas.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

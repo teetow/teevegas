@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using Sony.Vegas;
+using ScriptPortal.Vegas;
 
 namespace Tee.Cmd.Region
 {

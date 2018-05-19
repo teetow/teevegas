@@ -1,5 +1,5 @@
 using System.Linq;
-using Sony.Vegas;
+using ScriptPortal.Vegas;
 
 namespace Tee.Scr.RegionRender
 {

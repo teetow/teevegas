@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using Sony.Vegas;
+using ScriptPortal.Vegas;
 using Tee.Lib.Vegas;
 using Tee.Lib.Vegas.Dialogs;
 

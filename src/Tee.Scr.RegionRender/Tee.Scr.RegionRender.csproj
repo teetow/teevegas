@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Tee.Scr.RegionRender</RootNamespace>
     <AssemblyName>Tee.Scr.RegionRender</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -40,8 +40,8 @@
     <OutputPath>bin\x86\Release\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Sony.Vegas">
-      <HintPath>C:\Program Files (x86)\Sony\Vegas Pro 9.0\Sony.Vegas.dll</HintPath>
+    <Reference Include="ScriptPortal.Vegas">
+      <HintPath>C:\Program Files\VEGAS\VEGAS Pro 15.0\ScriptPortal.Vegas.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
