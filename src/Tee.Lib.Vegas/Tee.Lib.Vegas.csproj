@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Tee.Lib.Vegas</RootNamespace>
     <AssemblyName>Tee.Lib.Vegas</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>
     </SccProjectName>
@@ -88,11 +88,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ScriptPortal.Vegas">
-      <HintPath>C:\Program Files\VEGAS\VEGAS Pro 15.0\ScriptPortal.Vegas.dll</HintPath>
-    </Reference>
-    <Reference Include="Sony.Vegas.RenderAs, Version=12.0.0.563, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files\Sony\Vegas Pro 12.0\Sony.Vegas.RenderAs.dll</HintPath>
+      <HintPath>C:\Program Files\VEGAS\VEGAS Pro 23.0\ScriptPortal.Vegas.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -207,7 +203,7 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>xcopy /R /Y "$(TargetPath)" "c:\Program Files\TeeVegas\Application Extensions\"
-xcopy /R /Y "$(TargetPath)" "c:\Program Files\TeeVegas\Script Menu\"</PostBuildEvent>
+    <PostBuildEvent>xcopy /R /Y "$(TargetPath)" "%APPDATA%\VEGAS Pro\23.0\Application Extensions\"
+xcopy /R /Y "$(TargetPath)" "%APPDATA%\VEGAS Pro\23.0\Script Menu\"</PostBuildEvent>
   </PropertyGroup>
 </Project>
