@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
 using System.Xml;
@@ -12,6 +13,11 @@ namespace Tee.Scr.RegionRender
 	{
 		public void FromVegas(Vegas Vegas, String ScriptFile, XmlDocument ScriptSettings, ScriptArgs Args)
 		{
+			if (Environment.GetEnvironmentVariable("TEEVEGAS_DEBUG_ATTACH") == "1" && !Debugger.IsAttached)
+			{
+				Debugger.Launch();
+			}
+
 			if (ArgsHasSetup(Args)) // config mode
 			{
 				RunSetup(Vegas);

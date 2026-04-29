@@ -25,7 +25,7 @@ namespace Tee.Scr.RegionRender
 
 				set.AddIfNotDefault(RenderTags.AudioFmt, cmbAudioRenderer.Text);
 				set.AddIfNotDefault(RenderTags.AudioTpl, cmbAudioTemplate.Text);
-				set.AddIfNotDefault(RenderTags.VideoTpl, cmbVideoRenderer.Text);
+				set.AddIfNotDefault(RenderTags.VideoFmt, cmbVideoRenderer.Text);
 				set.AddIfNotDefault(RenderTags.VideoTpl, cmbVideoTemplate.Text);
 
 				set.AddIfNotDefault(RenderTags.DoReadonly, cbDoReadonly.Checked);

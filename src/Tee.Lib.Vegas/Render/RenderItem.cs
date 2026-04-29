@@ -114,22 +114,31 @@ namespace Tee.Lib.Vegas.Render
 		{
 			get
 			{
-				// root + target + region
-				string filepath = ApplyNamingMask(RenderParams.GetParam<string>(RenderTags.NamingMask));
-				filepath = filepath.StripRenderTags();
-				if (string.IsNullOrEmpty(RenderParams.GetParam<string>(RenderTags.RootDir)))
+				string fileName = ApplyNamingMask(RenderParams.GetParam<string>(RenderTags.NamingMask));
+				fileName = fileName.StripRenderTags();
+				if (string.IsNullOrWhiteSpace(fileName))
 				{
-					if (string.IsNullOrEmpty(RenderParams.GetParam<string>(RenderTags.TargetDir)))
-					{
-						filepath = Path.IsPathRooted(filepath) ? filepath : Path.Combine("C:\\", filepath);
-					}
-					else
-						filepath = Path.Combine(RenderParams.GetParam<string>(RenderTags.TargetDir), filepath);
+					fileName = string.IsNullOrWhiteSpace(RegionLabel) ? "render" : RegionLabel;
 				}
-				else
+
+				string targetDir = RenderParams.GetParam<string>(RenderTags.TargetDir);
+				if (string.IsNullOrWhiteSpace(targetDir))
 				{
-					filepath = Path.Combine(RenderParams.GetParam<string>(RenderTags.RootDir), RenderParams.GetParam<string>(RenderTags.TargetDir));
+					targetDir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 				}
+
+				var rootDir = RenderParams.GetParam<string>(RenderTags.RootDir);
+				if (!string.IsNullOrWhiteSpace(rootDir))
+				{
+					targetDir = Path.Combine(rootDir, targetDir);
+				}
+
+				if (!Path.IsPathRooted(targetDir))
+				{
+					targetDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), targetDir);
+				}
+
+				string filepath = Path.Combine(targetDir, fileName);
 
 				if (RenderFormat != null)
 				{

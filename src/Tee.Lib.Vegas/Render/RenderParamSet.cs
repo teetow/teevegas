@@ -11,7 +11,7 @@ namespace Tee.Lib.Vegas.Render
 		private readonly List<RenderParameter> _defaultParams = new List<RenderParameter>
 		{
 			new RenderParameter<string>(RenderTags.RootDir, String.Empty),
-			new RenderParameter<string>(RenderTags.TargetDir, "C:\\"),
+			new RenderParameter<string>(RenderTags.TargetDir, Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)),
 			new RenderParameter<string>(RenderTags.NamingMask,"{region}"),
 
 			new RenderParameter<bool>(RenderTags.NoRender),

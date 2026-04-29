@@ -205,7 +205,6 @@ namespace Tee.Lib.Vegas.Render
 			SetProgressBounds(Count);
 			using (UndoBlock undo = new UndoBlock("Render tracks"))
 			{
-                MessageBox.Show("I am alive!");
 				for (int i = 0; i < Count; i++)
 				{
 					var renderItem = this[i];
@@ -218,7 +217,8 @@ namespace Tee.Lib.Vegas.Render
 					// padding
 					if (renderItem.RenderParams.GetParam<bool>(RenderTags.DoPadding))
 					{
-						if (renderItem.RenderTemplate.RendererID != myVegas.Renderers.FindByName("Wave (Microsoft)").ID)
+						var waveRenderer = myVegas.Renderers.FindByName("Wave (Microsoft)");
+						if (renderItem.RenderTemplate == null || waveRenderer == null || renderItem.RenderTemplate.RendererID != waveRenderer.ID)
 						{
 							ErrorLog(
 								String.Format(
@@ -242,6 +242,20 @@ namespace Tee.Lib.Vegas.Render
 						}
 					}
 
+					if (renderItem.RenderTemplate == null)
+					{
+						ErrorLog(String.Format(
+							"The region {0} could not be rendered because no render template could be resolved. Check your audio/video renderer and template settings.",
+							renderItem.Region.Label));
+						continue;
+					}
+
+					string outputDir = Path.GetDirectoryName(renderItem.FilePath);
+					if (!string.IsNullOrEmpty(outputDir) && !Directory.Exists(outputDir))
+					{
+						Directory.CreateDirectory(outputDir);
+					}
+
 					if (File.Exists(renderItem.FilePath) && renderItem.RenderParams.GetParam<bool>(RenderTags.DoReadonly))
 					{
 						// check readonly
@@ -253,7 +267,16 @@ namespace Tee.Lib.Vegas.Render
 					}
 					SetProgress(i);
 					SetProgressStatus("Rendering " + renderItem.FilePath);
-					RenderStatus status = myVegas.Render(renderItem.FilePath, renderItem.RenderTemplate, renderItem.Start, renderItem.Length);
+					RenderStatus status;
+					try
+					{
+						status = myVegas.Render(renderItem.FilePath, renderItem.RenderTemplate, renderItem.Start, renderItem.Length);
+					}
+					catch (Exception ex)
+					{
+						ErrorLog(String.Format("{0} raised exception: {1}", renderItem.FilePath, ex.Message));
+						continue;
+					}
 					if (status != RenderStatus.Complete)
 					{
 						ErrorLog(String.Format("{0} raised error {1}", renderItem.FilePath, status.ToString()));
